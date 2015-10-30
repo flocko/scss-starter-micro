@@ -23,6 +23,11 @@ var options = {
     destination: 'src/css'
   },
 
+  // html files
+  html: {
+    files: 'src/*.html',
+  },
+
   // connect to local server
   connect: {
     port: 9000,
@@ -40,11 +45,13 @@ var options = {
   watch: {
     files: function() {
       return [
+        options.html.files,
         options.sass.files
       ]
     },
     run: function() {
       return [
+        [ 'html' ],
         [ 'compile:sass' ]
       ]
     }
@@ -67,6 +74,12 @@ gulp.task( 'connect', function() {
     base: options.connect.base,
     livereload: true
   });
+});
+
+// html
+gulp.task( 'html', function() {
+  gulp.src( options.html.files )
+  .pipe( plugins.connect.reload() );
 });
 
 // compile:sass
