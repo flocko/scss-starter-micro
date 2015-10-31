@@ -13,6 +13,7 @@
     "gulp-autoprefixer": "^3.1.0",
     "gulp-connect": "^2.2.0",
     "gulp-csscss": "^0.1.2",
+    "gulp-debug": "^2.1.2",
     "gulp-load-plugins": "^1.0.0",
     "gulp-parker": "^0.1.4",
     "gulp-plumber": "^1.0.1",
