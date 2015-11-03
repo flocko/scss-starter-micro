@@ -13,21 +13,29 @@
  * gulp-load-plugins
  * gulp-plumber
  * gulp-sass
+ * gulp-html-replace
  */
 var gulp        = require('gulp');
 var plugins     = require('gulp-load-plugins')();
 var browserSync = require('browser-sync');
 var reload      = browserSync.reload;
+var htmlreplace = require('gulp-html-replace');
 
 /**
  * Options
  */
 var src = {
+  path : 'src/',
   scss : 'src/sass/**/*.scss',
   css  : 'src/css',
   html : 'src/*.html',
   js   : 'src/js/**/*.js'
 };
+
+var build = {
+  path : 'app/',
+  html : 'app/*.html'
+}
 
 /**
  * Main tasks
@@ -46,6 +54,7 @@ gulp.task('dev', ['sass'], function() {
 
   gulp.watch(src.scss, ['sass']);
   gulp.watch(src.html).on('change', reload);
+  gulp.watch(src.js).on('change', reload);
 });
 
 // compile sass
@@ -62,3 +71,14 @@ gulp.task('sass', function() {
 });
 
 // compile js
+
+// replace links for build
+gulp.task('html_replace', function() {
+  gulp.src( build.html )
+  .pipe( plugins.plumber() )
+  .pipe( htmlreplace({
+    'css' : 'css/style.css',
+    'js'  : 'js/app.js'
+  }))
+  .pipe(gulp.dest( build.path ));
+});
