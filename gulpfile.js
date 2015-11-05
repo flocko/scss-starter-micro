@@ -14,12 +14,16 @@
  * gulp-plumber
  * gulp-sass
  * gulp-html-replace
+ * run-sequence
+ * gulp-uglify
+ * gulp-concat
  */
 var gulp        = require('gulp');
 var plugins     = require('gulp-load-plugins')();
 var browserSync = require('browser-sync');
 var reload      = browserSync.reload;
 var htmlreplace = require('gulp-html-replace');
+var runSequence = require('run-sequence');
 
 /**
  * Options
@@ -27,13 +31,14 @@ var htmlreplace = require('gulp-html-replace');
 var src = {
   path : 'src/',
   scss : 'src/sass/**/*.scss',
-  css  : 'src/css',
+  css  : 'src/css/',
   html : 'src/*.html',
   js   : 'src/js/**/*.js'
 };
 
 var build = {
   path : 'app/',
+  css  : 'app/css/',
   html : 'app/*.html'
 }
 
@@ -41,6 +46,11 @@ var build = {
  * Main tasks
  */
 gulp.task('default', ['dev']);
+
+// run-sequence until gulp 4.0
+gulp.task('build', function() {
+  runSequence('sass', ['copy:style','copy:html', 'minify:js'], 'html:replace');
+});
 
 
 /**
@@ -59,21 +69,28 @@ gulp.task('dev', ['sass'], function() {
 
 // compile sass
 gulp.task('sass', function() {
-  return gulp.src(src.scss)
-    .pipe( plugins.plumber() )
-    .pipe( plugins.sass( { outputStyle : 'compressed' }).on('error', plugins.sass.logError))
-    .pipe( plugins.autoprefixer( {
-      browsers: ['last 2 versions'],
-        cascade: false
-      }))        
-    .pipe(gulp.dest(src.css))    
-    .pipe(reload({stream: true}));
+  gulp.src(src.scss)
+  .pipe( plugins.plumber() )
+  .pipe( plugins.sass( { outputStyle : 'compressed' }).on('error', plugins.sass.logError))
+  .pipe( plugins.autoprefixer( {
+    browsers: ['last 2 versions'],
+      cascade: false
+    }))        
+  .pipe(gulp.dest(src.css))    
+  .pipe(reload({stream: true}));
 });
 
-// compile js
+// concat all js files for build
+gulp.task('minify:js', function() {
+  return gulp.src(src.js)
+  .pipe( plugins.plumber() )
+  .pipe( plugins.concat('app.js') )
+  .pipe( plugins.uglify() )
+  .pipe( gulp.dest( build.path + 'js/') );
+});
 
 // replace links for build
-gulp.task('html_replace', function() {
+gulp.task('html:replace', function() {
   gulp.src( build.html )
   .pipe( plugins.plumber() )
   .pipe( htmlreplace({
@@ -81,4 +98,16 @@ gulp.task('html_replace', function() {
     'js'  : 'js/app.js'
   }))
   .pipe(gulp.dest( build.path ));
+});
+
+// copy files to app folder
+gulp.task('copy:style', function() {
+  return gulp.src( src.css + 'style.css' )
+  .pipe( gulp.dest( build.css ) );
+});
+
+// copy html files to app folder
+gulp.task('copy:html', function() {
+  return gulp.src(src.path + '**/*.html')
+  .pipe( gulp.dest( build.path ) );
 });
