@@ -17,6 +17,7 @@
  * run-sequence
  * gulp-uglify
  * gulp-concat
+ * gulp-jshint
  */
 var gulp        = require('gulp');
 var plugins     = require('gulp-load-plugins')();
@@ -46,15 +47,15 @@ var build = {
  * Main tasks
  */
 gulp.task('default', ['dev']);
+gulp.task('test', ['test:js']);
 
 // run-sequence until gulp 4.0
 gulp.task('build', function() {
   runSequence('sass', ['copy:style','copy:html', 'minify:js'], 'html:replace');
 });
 
-
 /**
- * Sub tasks
+ * Development Tasks
  */
 // start dev server and watch for file changes
 gulp.task('dev', ['sass'], function() {
@@ -79,6 +80,11 @@ gulp.task('sass', function() {
   .pipe(gulp.dest(src.css))    
   .pipe(reload({stream: true}));
 });
+
+
+/**
+ * Build Tasks
+ **/
 
 // concat all js files for build
 gulp.task('minify:js', function() {
@@ -110,4 +116,17 @@ gulp.task('copy:style', function() {
 gulp.task('copy:html', function() {
   return gulp.src(src.path + '**/*.html')
   .pipe( gulp.dest( build.path ) );
+});
+
+
+/**
+ * Testing Tasks
+ **/
+
+// test js files with jshint
+gulp.task('test:js', function() {
+  gulp.src( src.js )
+  .pipe( plugins.plumber() )
+  .pipe( plugins.jshint() )
+  .pipe( plugins.jshint.reporter( 'default' ) );
 });
