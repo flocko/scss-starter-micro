@@ -1,5 +1,7 @@
 /**
+ * ---------------------------
  * Available Tasks
+ * ---------------------------
  * gulp       - Starts local dev server and watches for file changes
  * gulp build - copy src content to app/ for release
  * gulp test  - html/js/css testing
@@ -7,7 +9,9 @@
 
 
 /**
+ * ---------------------------
  * Plugins
+ * ---------------------------
  * gulp
  * gulp-autoprefixer
  * gulp-load-plugins
@@ -20,6 +24,7 @@
  * gulp-jshint
  * gulp-parker
  */
+
 var gulp        = require('gulp');
 var plugins     = require('gulp-load-plugins')();
 var browserSync = require('browser-sync');
@@ -28,15 +33,25 @@ var htmlreplace = require('gulp-html-replace');
 var runSequence = require('run-sequence');
 
 /**
- * Options
+ * ---------------------------
+ * ENV Variables
+ * ---------------------------
  */
 
 // Ruby installed on machine
 // if needed get from
 // https://www.ruby-lang.org
 var ENV_RUBY = false;
+
 // ruby gem csscss: gem install csscss
 var ENV_CSSCSS = false;
+
+
+/**
+ * ---------------------------
+ * Paths
+ * ---------------------------
+ */
 
 var src = {
   path : 'src/',
@@ -53,7 +68,9 @@ var build = {
 }
 
 /**
+ * ---------------------------
  * Main tasks
+ * ---------------------------
  */
 
 gulp.task('default', ['dev']);
@@ -65,7 +82,9 @@ gulp.task('build', function() {
 });
 
 /**
+ * ---------------------------
  * Development Tasks
+ * ---------------------------
  */
 
 // start dev server and watch for file changes
@@ -94,7 +113,9 @@ gulp.task('sass', function() {
 
 
 /**
+ * ---------------------------
  * Build Tasks
+ * ---------------------------
  **/
 
 // concat all js files for build
@@ -131,7 +152,9 @@ gulp.task('copy:html', function() {
 
 
 /**
+ * ---------------------------
  * Testing Tasks
+ * ---------------------------
  **/
 
 // test js files with jshint
