@@ -31,7 +31,12 @@ var runSequence = require('run-sequence');
  * Options
  */
 
+// Ruby installed on machine
+// if needed get from
+// https://www.ruby-lang.org
 var ENV_RUBY = false;
+// ruby gem csscss: gem install csscss
+var ENV_CSSCSS = false;
 
 var src = {
   path : 'src/',
@@ -82,8 +87,8 @@ gulp.task('sass', function() {
   .pipe( plugins.autoprefixer( {
     browsers: ['last 2 versions'],
       cascade: false
-    }))        
-  .pipe(gulp.dest(src.css))    
+    }))
+  .pipe(gulp.dest(src.css))
   .pipe(reload({stream: true}));
 });
 
@@ -143,7 +148,7 @@ gulp.task('test:css', function() {
   .pipe( plugins.plumber() )
   .pipe( plugins.parker() );
 
-  if (ENV_RUBY) {
+  if (ENV_RUBY && ENV_CSSCSS) {
     gulp.src( src.css + 'style.css' )
     .pipe( plugins.plumber() )
     .pipe( plugins.csscss() );
