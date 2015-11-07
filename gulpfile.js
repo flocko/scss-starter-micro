@@ -30,6 +30,9 @@ var runSequence = require('run-sequence');
 /**
  * Options
  */
+
+var ENV_RUBY = false;
+
 var src = {
   path : 'src/',
   scss : 'src/sass/**/*.scss',
@@ -137,6 +140,12 @@ gulp.task('test:js', function() {
 // analyse css files
 gulp.task('test:css', function() {
   gulp.src( src.css + 'style.css' )
-  .pipe( plugins.plumber() )  
+  .pipe( plugins.plumber() )
   .pipe( plugins.parker() );
+
+  if (ENV_RUBY) {
+    gulp.src( src.css + 'style.css' )
+    .pipe( plugins.plumber() )
+    .pipe( plugins.csscss() );
+  }
 });
