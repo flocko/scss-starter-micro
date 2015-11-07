@@ -18,6 +18,7 @@
  * gulp-uglify
  * gulp-concat
  * gulp-jshint
+ * gulp-parker
  */
 var gulp        = require('gulp');
 var plugins     = require('gulp-load-plugins')();
@@ -46,8 +47,9 @@ var build = {
 /**
  * Main tasks
  */
+
 gulp.task('default', ['dev']);
-gulp.task('test', ['test:js']);
+gulp.task('test', ['test:js', 'test:css']);
 
 // run-sequence until gulp 4.0
 gulp.task('build', function() {
@@ -57,6 +59,7 @@ gulp.task('build', function() {
 /**
  * Development Tasks
  */
+
 // start dev server and watch for file changes
 gulp.task('dev', ['sass'], function() {
   browserSync({
@@ -129,4 +132,11 @@ gulp.task('test:js', function() {
   .pipe( plugins.plumber() )
   .pipe( plugins.jshint() )
   .pipe( plugins.jshint.reporter( 'default' ) );
+});
+
+// analyse css files
+gulp.task('test:css', function() {
+  gulp.src( src.css + 'style.css' )
+  .pipe( plugins.plumber() )  
+  .pipe( plugins.parker() );
 });
