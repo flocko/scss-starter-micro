@@ -16,6 +16,7 @@
     "gulp-csscss": "^0.1.2",
     "gulp-debug": "^2.1.2",
     "gulp-html-replace": "^1.5.4",
+    "gulp-imagemin": "^2.4.0",
     "gulp-jshint": "^1.12.0",
     "gulp-load-plugins": "^1.0.0",
     "gulp-parker": "^0.1.4",

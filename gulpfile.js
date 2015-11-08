@@ -23,6 +23,7 @@
  * gulp-concat
  * gulp-jshint
  * gulp-parker
+ * gulp-imagemin
  */
 
 var gulp        = require('gulp');
@@ -47,6 +48,7 @@ var ENV_RUBY = false;
 var ENV_CSSCSS = false;
 
 
+
 /**
  * ---------------------------
  * Paths
@@ -58,7 +60,8 @@ var src = {
   scss : 'src/sass/**/*.scss',
   css  : 'src/css/',
   html : 'src/*.html',
-  js   : 'src/js/**/*.js'
+  js   : 'src/js/**/*.js',
+  img  : 'src/img/**.*'
 };
 
 var build = {
@@ -77,8 +80,8 @@ gulp.task('default', ['dev']);
 gulp.task('test', ['test:js', 'test:css']);
 
 // run-sequence until gulp 4.0
-gulp.task('build', function() {
-  runSequence('sass', ['copy:style','copy:html', 'minify:js'], 'html:replace');
+gulp.task('build', function(done) {
+  runSequence('sass', ['copy:style','copy:html', 'copy:img', 'minify:js'], 'html:replace', done);
 });
 
 /**
@@ -138,6 +141,16 @@ gulp.task('html:replace', function() {
   .pipe(gulp.dest( build.path ));
 });
 
+// copy images and perform minification
+gulp.task('copy:img', function() {
+  return gulp.src( src.img )
+  .pipe( plugins.plumber() )
+  .pipe( plugins.imagemin({
+    progressive: true
+  }) )
+  .pipe( gulp.dest( build.path + 'img/' ) );
+});
+
 // copy files to app folder
 gulp.task('copy:style', function() {
   return gulp.src( src.css + 'style.css' )
@@ -146,7 +159,7 @@ gulp.task('copy:style', function() {
 
 // copy html files to app folder
 gulp.task('copy:html', function() {
-  return gulp.src(src.path + '**/*.html')
+  return gulp.src( src.path + '**/*.html' )
   .pipe( gulp.dest( build.path ) );
 });
 
