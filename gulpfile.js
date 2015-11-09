@@ -51,23 +51,39 @@ var ENV_CSSCSS = false;
 
 /**
  * ---------------------------
- * Paths
+ * Paths and Options
  * ---------------------------
  */
 
-var src = {
-  path : 'src/',
-  scss : 'src/sass/**/*.scss',
-  css  : 'src/css/',
-  html : 'src/*.html',
-  js   : 'src/js/**/*.js',
-  img  : 'src/img/**.*'
-};
+var path = {
+  build : 'app/',
+  dev   : 'src/'
+}
 
-var build = {
-  path : 'app/',
-  css  : 'app/css/',
-  html : 'app/*.html'
+var options = {
+  sass : {
+    files : 'sass/**/*.scss',
+    file  : 'sass/style.scss',
+    dest  : 'sass/'
+  },
+  css  : {
+    files : 'css/**/*.css',
+    file  : 'style.css',
+    dest  : 'css/'
+  },
+  html : {
+    files : '*.html',
+    file  : 'index.html'
+  },
+  js   : {
+    files : 'js/**/*.js',
+    file  : 'app.js',
+    dest  : 'js/'
+  },
+  img  : {
+    files : 'img/**.*',
+    dest  : 'img/',
+  }
 }
 
 /**
@@ -96,21 +112,21 @@ gulp.task('dev', ['sass'], function() {
     server: "./src"
   });
 
-  gulp.watch(src.scss, ['sass']);
-  gulp.watch(src.html).on('change', reload);
-  gulp.watch(src.js).on('change', reload);
+  gulp.watch(path.dev + options.sass.files, ['sass']);
+  gulp.watch(path.dev + options.html.files).on('change', reload);
+  gulp.watch(path.dev + options.js.files).on('change', reload);
 });
 
 // compile sass
 gulp.task('sass', function() {
-  gulp.src(src.scss)
+  gulp.src( path.dev + options.sass.files )
   .pipe( plugins.plumber() )
   .pipe( plugins.sass( { outputStyle : 'compressed' }).on('error', plugins.sass.logError))
   .pipe( plugins.autoprefixer( {
     browsers: ['last 2 versions'],
       cascade: false
     }))
-  .pipe(gulp.dest(src.css))
+  .pipe(gulp.dest( path.dev + options.css.dest ))
   .pipe(reload({stream: true}));
 });
 
@@ -123,44 +139,44 @@ gulp.task('sass', function() {
 
 // concat all js files for build
 gulp.task('minify:js', function() {
-  return gulp.src(src.js)
+  return gulp.src(path.dev + options.js.files)
   .pipe( plugins.plumber() )
-  .pipe( plugins.concat('app.js') )
+  .pipe( plugins.concat( options.js.file ) )
   .pipe( plugins.uglify() )
-  .pipe( gulp.dest( build.path + 'js/') );
+  .pipe( gulp.dest( path.build + options.js.dest ) );
 });
 
 // replace links for build
 gulp.task('html:replace', function() {
-  gulp.src( build.html )
+  gulp.src( path.build + options.html.files )
   .pipe( plugins.plumber() )
   .pipe( htmlreplace({
-    'css' : 'css/style.css',
-    'js'  : 'js/app.js'
+    'css' : options.css.dest + options.css.file,
+    'js'  : options.js.dest + options.js.file
   }))
-  .pipe(gulp.dest( build.path ));
+  .pipe(gulp.dest( path.build ));
 });
 
 // copy images and perform minification
 gulp.task('copy:img', function() {
-  return gulp.src( src.img )
+  return gulp.src( path.dev + options.img.files )
   .pipe( plugins.plumber() )
   .pipe( plugins.imagemin({
     progressive: true
   }) )
-  .pipe( gulp.dest( build.path + 'img/' ) );
+  .pipe( gulp.dest( path.build + options.img.dest ) );
 });
 
 // copy files to app folder
 gulp.task('copy:style', function() {
-  return gulp.src( src.css + 'style.css' )
-  .pipe( gulp.dest( build.css ) );
+  return gulp.src( path.dev + options.css.dest + options.css.file )
+  .pipe( gulp.dest( path.build + options.css.dest ) );
 });
 
 // copy html files to app folder
 gulp.task('copy:html', function() {
-  return gulp.src( src.path + '**/*.html' )
-  .pipe( gulp.dest( build.path ) );
+  return gulp.src( path.dev + options.html.files )
+  .pipe( gulp.dest( path.build ) );
 });
 
 
@@ -172,7 +188,7 @@ gulp.task('copy:html', function() {
 
 // test js files with jshint
 gulp.task('test:js', function() {
-  gulp.src( src.js )
+  gulp.src( path.dev + options.js.files )
   .pipe( plugins.plumber() )
   .pipe( plugins.jshint() )
   .pipe( plugins.jshint.reporter( 'default' ) );
@@ -180,12 +196,12 @@ gulp.task('test:js', function() {
 
 // analyse css files
 gulp.task('test:css', function() {
-  gulp.src( src.css + 'style.css' )
+  gulp.src( path.dev + options.css.dest + options.css.file )
   .pipe( plugins.plumber() )
   .pipe( plugins.parker() );
 
   if (ENV_RUBY && ENV_CSSCSS) {
-    gulp.src( src.css + 'style.css' )
+    gulp.src( path.dev + options.css.dest + options.css.file )
     .pipe( plugins.plumber() )
     .pipe( plugins.csscss() );
   }
