@@ -194,7 +194,7 @@ gulp.task('test:js', function() {
   .pipe( plugins.jshint.reporter( 'default' ) );
 });
 
-// analyse css files
+// css details
 gulp.task('test:css', function() {
   gulp.src( path.dev + options.css.dest + options.css.file )
   .pipe( plugins.plumber() )
