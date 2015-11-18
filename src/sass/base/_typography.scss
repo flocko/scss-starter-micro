@@ -25,6 +25,7 @@ $font-icons: MaterialDesignIcons;
  */
 
 body {
+  color: $color-primary-text;
   font: $font-text;
   @include font-size(15px,24px);
 }
