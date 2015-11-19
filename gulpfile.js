@@ -2,7 +2,8 @@
  * ---------------------------
  * Available Tasks
  * ---------------------------
- * gulp       - Starts local dev server and watches for file changes
+ * gulp exec  - install bower components and copy files
+ * gulp       - start local dev server and watch for file changes
  * gulp build - copy src content to app/ for release
  * gulp test  - html/js/css testing
  */
@@ -105,6 +106,10 @@ gulp.task('test', ['test:js', 'test:css']);
 // run-sequence until gulp 4.0
 gulp.task('build', function(done) {
   runSequence('sass', ['copy:style','copy:html', 'copy:img', 'minify:js'], 'html:replace', done);
+});
+
+gulp.task('exec', function(done) {
+  runSequence('bower:install', 'bower:copy', done);
 });
 
 /**
@@ -228,7 +233,7 @@ gulp.task('bower:install', function() {
 
 // copy bower files
 gulp.task('bower:copy', function() {
-  var jsFilter = gulpFilter('*.js');
+  var jsFilter   = plugins.filter('*.js');
   var fontFilter = plugins.filter(['*.eot', '*.woff', '*.svg', '*.ttf']);
 
   return gulp.src( mainBowerFiles({includeDev:true}) )

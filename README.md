@@ -10,6 +10,10 @@
 
 ## Gulp Tasks
 
+### Initial
+    gulp exec
+Install bower components and copy main files to src
+
 ### Development
     gulp
 Sets up a development server with browserSync and watches for changes in scss/html/js files
