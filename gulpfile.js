@@ -25,14 +25,17 @@
  * gulp-parker
  * gulp-imagemin
  * gulp-bower
+ * gulp-filter
+ * main-bower-files
  */
 
-var gulp        = require('gulp');
-var plugins     = require('gulp-load-plugins')();
-var browserSync = require('browser-sync');
-var reload      = browserSync.reload;
-var htmlreplace = require('gulp-html-replace');
-var runSequence = require('run-sequence');
+var gulp           = require('gulp');
+var plugins        = require('gulp-load-plugins')();
+var browserSync    = require('browser-sync');
+var reload         = browserSync.reload;
+var htmlreplace    = require('gulp-html-replace');
+var runSequence    = require('run-sequence');
+var mainBowerFiles = require('main-bower-files');
 
 /**
  * ---------------------------
@@ -62,28 +65,31 @@ var path = {
 }
 
 var options = {
-  sass : {
+  sass  : {
     files : 'sass/**/*.scss',
     file  : 'sass/style.scss',
     dest  : 'sass/'
   },
-  css  : {
+  css   : {
     files : 'css/**/*.css',
     file  : 'style.css',
     dest  : 'css/'
   },
-  html : {
+  html  : {
     files : '*.html',
     file  : 'index.html'
   },
-  js   : {
+  js    : {
     files : 'js/**/*.js',
     file  : 'app.js',
     dest  : 'js/'
   },
-  img  : {
+  img   : {
     files : 'img/**.*',
     dest  : 'img/',
+  },
+  fonts : {
+    dest : 'fonts/'
   }
 }
 
@@ -218,4 +224,15 @@ gulp.task('test:css', function() {
 // install bower components
 gulp.task('bower:install', function() {
   return plugins.bower({ cmd: 'install'});
+});
+
+// copy bower files
+gulp.task('bower:copy', function() {
+  var jsFilter = gulpFilter('*.js');
+  var fontFilter = plugins.filter(['*.eot', '*.woff', '*.svg', '*.ttf']);
+
+  return gulp.src( mainBowerFiles({includeDev:true}) )
+  .pipe( plugins.plumber() )
+  .pipe( fontFilter )
+  .pipe( gulp.dest( path.dev + options.fonts.dest ) );
 });
