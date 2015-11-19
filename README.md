@@ -3,6 +3,7 @@
 ## Prerequisites
 * [node](https://nodejs.org/en/)
 * [gulp](http://gulpjs.com/)
+* [bower](http://bower.io/)
 
 ## Installation
     npm install
