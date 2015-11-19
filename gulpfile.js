@@ -24,6 +24,7 @@
  * gulp-jshint
  * gulp-parker
  * gulp-imagemin
+ * gulp-bower
  */
 
 var gulp        = require('gulp');
@@ -205,4 +206,16 @@ gulp.task('test:css', function() {
     .pipe( plugins.plumber() )
     .pipe( plugins.csscss() );
   }
+});
+
+
+/**
+ * ---------------------------
+ * Exec Tasks
+ * ---------------------------
+ **/
+
+// install bower components
+gulp.task('bower:install', function() {
+  return plugins.bower({ cmd: 'install'});
 });
