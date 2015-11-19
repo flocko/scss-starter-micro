@@ -94,6 +94,12 @@ var options = {
   }
 }
 
+var vendor = {
+  mdi : {
+    sass : 'sass/vendor/mdi'
+  }
+}
+
 /**
  * ---------------------------
  * Main tasks
@@ -234,10 +240,15 @@ gulp.task('bower:install', function() {
 // copy bower files
 gulp.task('bower:copy', function() {
   var jsFilter   = plugins.filter('*.js');
-  var fontFilter = plugins.filter(['*.eot', '*.woff', '*.svg', '*.ttf']);
+  var scssFilter = plugins.filter('*.scss', {restore:true});
+  var fontFilter = plugins.filter(['*.eot', '*.woff', '*.svg', '*.ttf', '*.woff2'], {restore:true});
 
   return gulp.src( mainBowerFiles({includeDev:true}) )
   .pipe( plugins.plumber() )
   .pipe( fontFilter )
-  .pipe( gulp.dest( path.dev + options.fonts.dest ) );
+  .pipe( gulp.dest( path.dev + options.fonts.dest ) )
+  .pipe( fontFilter.restore )
+
+  .pipe( scssFilter )
+  .pipe( gulp.dest (path.dev + vendor.mdi.sass ))
 });

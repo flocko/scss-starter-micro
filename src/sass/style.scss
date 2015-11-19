@@ -13,3 +13,8 @@
  * sanitize, typography, ...
  */
 @import "base/modules";
+
+/**
+ * Load bower assets
+ */
+@import "vendor/mdi/materialdesignicons.scss";
