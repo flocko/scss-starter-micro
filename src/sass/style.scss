@@ -18,3 +18,15 @@
  * Load bower assets
  */
 @import "vendor/mdi/materialdesignicons.scss";
+
+/**
+ * Load components
+ * 
+ */
+@import "components/modules";
+
+/**
+ * Load layout
+ * 
+ */
+@import "components/layout/modules";
