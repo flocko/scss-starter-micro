@@ -90,6 +90,7 @@ var options = {
     dest  : 'img/',
   },
   fonts : {
+    files: 'fonts/**/*',
     dest : 'fonts/'
   }
 }
@@ -111,7 +112,7 @@ gulp.task('test', ['test:js', 'test:css']);
 
 // run-sequence until gulp 4.0
 gulp.task('build', function(done) {
-  runSequence('sass', ['copy:style','copy:html', 'copy:img', 'minify:js'], 'html:replace', done);
+  runSequence('sass', ['copy:style','copy:html', 'copy:img', 'copy:fonts', 'minify:js'], 'html:replace', done);
 });
 
 gulp.task('exec', function(done) {
@@ -197,6 +198,12 @@ gulp.task('copy:html', function() {
   .pipe( gulp.dest( path.build ) );
 });
 
+// copy font files to app folder
+gulp.task('copy:fonts', function() {
+  return gulp.src( path.dev + options.fonts.files )
+  .pipe( gulp.dest( path.build + options.fonts.dest ) );
+});
+
 
 /**
  * ---------------------------
@@ -239,7 +246,7 @@ gulp.task('bower:install', function() {
 
 // copy bower files
 gulp.task('bower:copy', function() {
-  var jsFilter   = plugins.filter('*.js');
+  var jsFilter   = plugins.filter('*.js', {restore:true});
   var scssFilter = plugins.filter('*.scss', {restore:true});
   var fontFilter = plugins.filter(['*.eot', '*.woff', '*.svg', '*.ttf', '*.woff2'], {restore:true});
 
@@ -251,4 +258,8 @@ gulp.task('bower:copy', function() {
 
   .pipe( scssFilter )
   .pipe( gulp.dest (path.dev + vendor.mdi.sass ))
+  .pipe( scssFilter.restore )
+
+  .pipe( jsFilter )
+  .pipe( gulp.dest (path.dev + options.js.dest ));
 });
