@@ -12,7 +12,9 @@
 
 ### Initial
     gulp exec
-Install bower components and copy main files to src
+Install bower components and copy main files to src. Components used are:
+[Material Design Icons](https://materialdesignicons.com/)
+[jQuery](https://jquery.com/)
 
 ### Development
     gulp
