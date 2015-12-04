@@ -1,0 +1,36 @@
+/**
+ * Styles for demo page purpose only
+ */
+
+.colorbox-wrapper {
+  display: flex;
+}
+
+.colorbox {
+  text-align: center;
+  padding: 20px 0;
+  border: 1px solid #eee;
+  flex: 1;
+  &_primary {
+    background: $color-primary;
+  }
+  &_primary-light {
+    background: $color-primary-light;
+  }
+  &_primary-dark {
+    background: $color-primary-dark;
+  }
+  &_primary-text {
+    background: $color-primary-text;
+    color: $color-icons;
+  }
+  &_accent {
+    background: $color-accent;
+  }
+  &_secondary-text {
+    background: $color-secondary-text;
+  }
+  &_icons {
+    background: $color-icons;
+  }
+}
