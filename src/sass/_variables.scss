@@ -15,5 +15,41 @@ $color-primary-dark: palette(blue, dark);
 $color-primary-text: #212121;
 
 $color-accent: palette(red);
+$color-accent-text: #ffffff;
 $color-secondary-text: #727272;
-$color-icons: #ffffff;
+$color-icons: $color-accent-text;
+
+// buttons - default
+$button-primary-color: #eeeeee !default; /* TODO */
+$button-secondary-color: $color-primary-text !default;
+$button-hover-color: $button-primary-color !default;
+$button-active-color: #dddddd !default; /* TODO */
+$button-focus-color: #eeeeee !default; /* TODO */
+
+// buttons - colored
+$button-primary-color-alt: $color-primary !default; /* TODO */
+$button-focus-color-alt: $button-focus-color !default;
+
+// buttons - accent
+$button-accent-color: $color-accent !default;
+$button-accent-text: $color-accent-text !default;
+
+/**
+ * Button specific definitions
+ */
+$button-min-width: 64px !default;
+$button-height: 36px !default;
+$button-padding: 16px !default;
+$button-margin: 4px !default;
+$button-border-radius: 2px !default;
+
+$button-icon-size: 32px !default;
+
+/**
+ * Animations
+ */
+$animation-curve-fast-out-slow-in: cubic-bezier(0.4, 0, 0.2, 1) !default;
+$animation-curve-linear-out-slow-in: cubic-bezier(0, 0, 0.2, 1) !default;
+$animation-curve-fast-out-linear-in: cubic-bezier(0.4, 0, 1, 1) !default;
+
+$animation-curve-default: $animation-curve-fast-out-slow-in !default;
