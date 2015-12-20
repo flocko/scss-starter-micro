@@ -1,3 +1,8 @@
+/**
+ * Button definition template 
+ * https://github.com/google/material-design-lite
+ */
+
 .button {
   background: transparent;
   border: none;
@@ -48,10 +53,51 @@
   }
 }
 
-.button--accent {
+.button--raised {
+  background: $button-primary-color;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
 
+  &:active {
+    background-color: $button-active-color;
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12),0 2px 4px -1px rgba(0,0,0,.2);
+  }
+
+  &:focus:not(:active){
+    background-color: $button-active-color;
+    box-shadow: 0 0 8px rgba(0,0,0,.18),0 8px 16px rgba(0,0,0,.36);
+  }
 }
 
-.button--colored {
 
+.button--colored.button--colored {
+  color: $button-primary-color-alt;
+
+  &.button--raised {
+    color: $button-primary-text;
+    background-color: $button-primary-color-alt;
+
+    &:active {
+      color: $button-primary-text;
+      background-color: $button-primary-color-alt;
+    }
+
+    &:focus:not(:active) {
+      color: $button-primary-text;
+      background-color: $button-primary-color-alt;
+    }
+  }
+}
+
+.button--accent.button--accent {
+  color: $button-accent-color;
+
+  &.button--raised {
+    color: $button-accent-text;
+    background-color: $button-accent-color;
+
+    &:active, &:focus:not(:active) {
+      color: $button-accent-text;
+      background-color: $button-accent-color;
+    }
+  }
 }
