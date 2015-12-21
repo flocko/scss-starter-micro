@@ -35,6 +35,10 @@ $button-primary-text: $color-accent-text !default;
 $button-accent-color: $color-accent !default;
 $button-accent-text: $color-accent-text !default;
 
+// buttons - disabled
+$button-disabled-color: #dddddd !default; /* TODO */
+$button-disabled-text: #999999 !default; /* TODO */
+
 /**
  * Button specific definitions
  */

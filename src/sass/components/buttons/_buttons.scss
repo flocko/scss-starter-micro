@@ -51,6 +51,13 @@
       background-color: $button-focus-color-alt;
     }
   }
+
+  &[disabled][disabled],
+  &.mdl-button--disabled.mdl-button--disabled {
+    color: $button-disabled-text;
+    cursor: default;
+    background-color: transparent;
+  }  
 }
 
 .button--raised {
@@ -66,8 +73,13 @@
     background-color: $button-active-color;
     box-shadow: 0 0 8px rgba(0,0,0,.18),0 8px 16px rgba(0,0,0,.36);
   }
-}
 
+  &[disabled][disabled],
+  &.button--disabled.button--disabled {
+    background-color: $button-disabled-color;
+    color: $button-disabled-text;
+  }  
+}
 
 .button--colored.button--colored {
   color: $button-primary-color-alt;
@@ -86,6 +98,12 @@
       background-color: $button-primary-color-alt;
     }
   }
+    
+  &[disabled][disabled],
+  &.button--disabled.button--disabled {
+    background-color: $button-disabled-color;
+    color: $button-disabled-text;
+  }
 }
 
 .button--accent.button--accent {
@@ -99,5 +117,11 @@
       color: $button-accent-text;
       background-color: $button-accent-color;
     }
+  }
+
+  &[disabled][disabled],
+  &.button--disabled.button--disabled {
+    background-color: $button-disabled-color;
+    color: $button-disabled-text;
   }
 }
