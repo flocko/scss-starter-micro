@@ -36,18 +36,18 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   @include font-size(30px,48px);
-  margin-bottom: 2rem;
+  margin: 2rem 0;
 }
 
 h2 {
   @include font-size(25px,36px);
-  margin-bottom: 1.5rem;
+  margin: 1.5rem 0;
 }
 
 h3 {
   font: $font-headline-italic;
   @include font-size(21px,28px);
-  margin-bottom: 1.2rem;
+  margin: 1.2rem 0;
 }
 
 h4 {

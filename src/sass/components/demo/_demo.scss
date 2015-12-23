@@ -4,13 +4,16 @@
 
 .colorbox-wrapper {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .colorbox {
   text-align: center;
   padding: 20px 0;
   border: 1px solid #eee;
-  flex: 1;
+  flex: 0 1 auto;
+  min-width: 200px;
+  
   &_primary {
     background: $color-primary;
   }
