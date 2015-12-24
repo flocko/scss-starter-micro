@@ -10,63 +10,60 @@
   <!-- endbuild -->
 </head>
 <body>
+  <header class="page-header">
+    <h1>Demo Page</h1>
+  </header>
+  <main class="page-content">
 
-  <div class="page-wrapper">
-    <header class="page-header">
-      <h1>Demo Page</h1>
-    </header>
-    <main class="page-content">
+  <section class="page-wrapper">
+    <h1>Page Heading (h1)</h1>
+    <h2>Sub heading (h2)</h2>
+    <h3>Section heading (h3)</h3>
+    <h4>Sub section heading (h4)</h4>
+    <strong>Strong text (strong)</strong>
+    <p>Body Text</p>
 
-      <section>
-        <h1>Page Heading (h1)</h1>
-        <h2>Sub heading (h2)</h2>
-        <h3>Section heading (h3)</h3>
-        <h4>Sub section heading (h4)</h4>
-        <strong>Strong text (strong)</strong>
-        <p>Body Text</p>
+    <p>Some paragraph is here</p>
 
-        <p>Some paragraph is here</p>
+    <h2>Icons by MDI</h2>
+    <i class="mdi mdi-bell"></i>
+    <a href="https://materialdesignicons.com/">Material Design Icons</a>
+    <i class="mdi mdi-bell"></i>
+  </section>
 
-        <h2>Icons by MDI</h2>
-        <i class="mdi mdi-bell"></i>
-        <a href="https://materialdesignicons.com/">Material Design Icons</a>
-        <i class="mdi mdi-bell"></i>
-      </section>
+  <section class="page-wrapper">
+    <h2>Color Definitions</h2>
+    <div class="colorbox-wrapper">
+      <div class="colorbox colorbox_primary">$color-primary</div>
+      <div class="colorbox colorbox_primary-light">$color-primary-light</div>
+      <div class="colorbox colorbox_primary-dark">$color-primary-dark</div>
+      <div class="colorbox colorbox_primary-text">$color-primary-text</div>
+      <div class="colorbox colorbox_accent">$color-accent</div>
+      <div class="colorbox colorbox_secondary-text">$color-secondary-text</div>
+      <div class="colorbox colorbox_icons">$color-icons</div>
+    </div>
+  </section>
 
-      <section>
-        <h2>Color Definitions</h2>
-        <div class="colorbox-wrapper">
-          <div class="colorbox colorbox_primary">$color-primary</div>
-          <div class="colorbox colorbox_primary-light">$color-primary-light</div>
-          <div class="colorbox colorbox_primary-dark">$color-primary-dark</div>
-          <div class="colorbox colorbox_primary-text">$color-primary-text</div>
-          <div class="colorbox colorbox_accent">$color-accent</div>
-          <div class="colorbox colorbox_secondary-text">$color-secondary-text</div>
-          <div class="colorbox colorbox_icons">$color-icons</div>
-        </div>
-      </section>
+  <section>
+    <h2>Form Elements</h2>
+  </section>
 
-      <section>
-      <h2>Form Elements</h2>
-      </section>
+  <section>
+    <h2>Buttons</h2>
+    <!-- standard buttons -->
+    <button class="button">Standard</button>
+    <button class="button button--colored">Primary</button>
+    <button class="button button--accent">Accent</button>
+    <button class="button" disabled>Disabled</button>
 
-      <section>
-        <h2>Buttons</h2>
-        <!-- standard buttons -->
-        <button class="button">Standard</button>
-        <button class="button button--colored">Primary</button>
-        <button class="button button--accent">Accent</button>
-        <button class="button" disabled>Disabled</button>
-
-        <!-- raised buttons -->
-        <button class="button button--raised">Raised</button>
-        <button class="button button--raised button--colored">Raised colored</button>
-        <button class="button button--raised button--accent">Raised accent</button>
-        <button class="button button--raised" disabled>Raised disabled</button>
-      </section>
-    </main>
-    <footer class="page-footer"></footer>
-  </div>
+    <!-- raised buttons -->
+    <button class="button button--raised">Raised</button>
+    <button class="button button--raised button--colored">Raised colored</button>
+    <button class="button button--raised button--accent">Raised accent</button>
+    <button class="button button--raised" disabled>Raised disabled</button>
+  </section>
+  </main>
+  <footer class="page-footer"></footer>
 
   <!-- build:js -->
   <script src="js/jquery.js" charset="utf-8"></script>
