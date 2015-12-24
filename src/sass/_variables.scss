@@ -20,14 +20,14 @@ $color-secondary-text: #727272;
 $color-icons: $color-accent-text;
 
 // buttons - default
-$button-primary-color: #eeeeee !default; /* TODO */
+$button-primary-color: #eeeeee !default;
 $button-secondary-color: $color-primary-text !default;
 $button-hover-color: $button-primary-color !default;
-$button-active-color: #dddddd !default; /* TODO */
-$button-focus-color: #eeeeee !default; /* TODO */
+$button-active-color: #dddddd !default;
+$button-focus-color: #eeeeee !default;
 
 // buttons - colored
-$button-primary-color-alt: $color-primary !default; /* TODO */
+$button-primary-color-alt: $color-primary !default;
 $button-focus-color-alt: $button-focus-color !default;
 $button-primary-text: $color-accent-text !default;
 
@@ -36,8 +36,8 @@ $button-accent-color: $color-accent !default;
 $button-accent-text: $color-accent-text !default;
 
 // buttons - disabled
-$button-disabled-color: #dddddd !default; /* TODO */
-$button-disabled-text: #999999 !default; /* TODO */
+$button-disabled-color: #dddddd !default;
+$button-disabled-text: #999999 !default;
 
 /**
  * Button specific definitions
@@ -47,7 +47,6 @@ $button-height: 36px !default;
 $button-padding: 16px !default;
 $button-margin: 4px !default;
 $button-border-radius: 2px !default;
-
 $button-icon-size: 32px !default;
 
 /**
