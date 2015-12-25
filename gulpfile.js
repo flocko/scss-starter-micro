@@ -45,7 +45,6 @@ var mainBowerFiles = require('main-bower-files');
  */
 
 // Ruby installed on machine
-// if needed get from
 // https://www.ruby-lang.org
 var ENV_RUBY = false;
 
