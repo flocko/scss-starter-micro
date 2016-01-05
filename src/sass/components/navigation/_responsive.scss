@@ -1,0 +1,57 @@
+/**
+ * Simple responsive navigation
+ * based on input:checked field
+ **/
+
+
+/* -------------------------- */
+/* components                 */
+/* -------------------------- */
+
+.navbar {
+  width: 100%;
+  background-color: $navbar-primary-color;
+  padding: 10px 0;
+  @extend %clearfix;
+}
+
+#toggleNav {
+  display: none;
+}
+
+.toggleNavIcon {
+  float: right; /* TODO - switch to flexbox for navicon and logo */
+  @include font-size(30px);  
+}
+
+#toggleNav:checked ~ .main-navigation {
+  display: block;
+}
+
+
+/* -------------------------- */
+/* mobile navigation          */
+/* -------------------------- */
+
+.main-navigation {
+  width: 100%;
+  list-style-type: none;
+  display: none;
+
+  a {
+    background-color: black; /* TODO */
+    color: white; /* TODO */
+    display: block;
+    padding: 10px 10px;
+    @include font-size(18px);
+
+    &:hover, &:focus {
+      background-color: green; /* TODO */
+    }
+  }
+}
+
+
+/* -------------------------- */
+/* desktop navigation         */
+/* -------------------------- */
