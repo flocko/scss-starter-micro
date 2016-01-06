@@ -46,7 +46,7 @@
     @include font-size(18px);
 
     &:hover, &:focus {
-      background-color: green; /* TODO */
+      background-color: $navbar-hover-color;
     }
   }
 }
