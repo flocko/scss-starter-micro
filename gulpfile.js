@@ -252,7 +252,7 @@ gulp.task('bower:copy', function() {
   var scssFilter = plugins.filter('*.scss', {restore:true});
   var fontFilter = plugins.filter(['*.eot', '*.woff', '*.svg', '*.ttf', '*.woff2'], {restore:true});
 
-  return gulp.src( mainBowerFiles({includeDev:true}) )
+  return gulp.src( mainBowerFiles({includeDev:true, debugging: true}), { base: './' } )
   .pipe( plugins.plumber() )
   .pipe( fontFilter )
   .pipe( gulp.dest( path.dev + options.fonts.dest ) )
