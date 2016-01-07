@@ -97,6 +97,9 @@ var options = {
 var vendor = {
   mdi : {
     sass : 'sass/vendor/mdi'
+  },
+  breakpoint : {
+    sass : 'sass/vendor/breakpoint'
   }
 }
 
