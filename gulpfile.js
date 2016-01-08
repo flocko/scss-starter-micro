@@ -28,6 +28,7 @@
  * gulp-bower
  * gulp-filter
  * main-bower-files
+ * gulp-flatten
  */
 
 var gulp           = require('gulp');
@@ -95,12 +96,7 @@ var options = {
 }
 
 var vendor = {
-  mdi : {
-    sass : 'sass/vendor/mdi'
-  },
-  breakpoint : {
-    sass : 'sass/vendor/breakpoint'
-  }
+  sass : 'sass/vendor'
 }
 
 /**
@@ -248,18 +244,19 @@ gulp.task('bower:install', function() {
 
 // copy bower files
 gulp.task('bower:copy', function() {
-  var jsFilter   = plugins.filter('*.js', {restore:true});
-  var scssFilter = plugins.filter('*.scss', {restore:true});
-  var fontFilter = plugins.filter(['*.eot', '*.woff', '*.svg', '*.ttf', '*.woff2'], {restore:true});
+  var jsFilter   = plugins.filter('**/*.js', {restore:true});
+  var scssFilter = plugins.filter('**/*.scss', {restore:true});
+  var fontFilter = plugins.filter(['**/*.eot', '**/*.woff', '**/*.svg', '**/*.ttf', '**/*.woff2'], {restore:true});
 
-  return gulp.src( mainBowerFiles({includeDev:true, debugging: true}), { base: './' } )
+  return gulp.src( mainBowerFiles({includeDev:true}), { base: './bower_components' } )
   .pipe( plugins.plumber() )
   .pipe( fontFilter )
+  .pipe( plugins.flatten() )
   .pipe( gulp.dest( path.dev + options.fonts.dest ) )
   .pipe( fontFilter.restore )
 
   .pipe( scssFilter )
-  .pipe( gulp.dest (path.dev + vendor.mdi.sass ))
+  .pipe( gulp.dest (path.dev + vendor.sass ))
   .pipe( scssFilter.restore )
 
   .pipe( jsFilter )

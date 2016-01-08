@@ -9,15 +9,16 @@
 @import "variables";
 
 /**
+ * Load bower assets
+ */
+@import "vendor/mdi/scss/materialdesignicons.scss";
+@import "vendor/breakpoint-sass/stylesheets/breakpoint";
+
+/**
  * Load base includes
  * sanitize, typography, ...
  */
 @import "base/modules";
-
-/**
- * Load bower assets
- */
-@import "vendor/mdi/materialdesignicons.scss";
 
 /**
  * Load components
