@@ -29,6 +29,7 @@
  * gulp-filter
  * main-bower-files
  * gulp-flatten
+ * del
  */
 
 var gulp           = require('gulp');
@@ -38,6 +39,7 @@ var reload         = browserSync.reload;
 var htmlreplace    = require('gulp-html-replace');
 var runSequence    = require('run-sequence');
 var mainBowerFiles = require('main-bower-files');
+var del            = require('del');
 
 /**
  * ---------------------------
@@ -110,7 +112,7 @@ gulp.task('test', ['test:js', 'test:css']);
 
 // run-sequence until gulp 4.0
 gulp.task('build', function(done) {
-  runSequence('sass', ['copy:style','copy:html', 'copy:img', 'copy:fonts', 'minify:js'], 'html:replace', done);
+  runSequence('build:clean', 'sass', ['copy:style','copy:html', 'copy:img', 'copy:fonts', 'minify:js'], 'html:replace', done);
 });
 
 gulp.task('exec', function(done) {
@@ -202,6 +204,10 @@ gulp.task('copy:fonts', function() {
   .pipe( gulp.dest( path.build + options.fonts.dest ) );
 });
 
+// delete app folder
+gulp.task('build:clean', function() {
+  return del('app/');
+});
 
 /**
  * ---------------------------
