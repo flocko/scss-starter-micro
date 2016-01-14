@@ -20,7 +20,7 @@
 }
 
 .toggleNavIcon {
-  float: right; /* TODO - switch to flexbox for navicon and logo */
+  cursor: pointer;
   @include font-size(30px);  
 }
 

@@ -5,4 +5,19 @@
 .page-wrapper {
   max-width: $page-maxwidth;
   margin: 0 auto;
+  padding: 0 10px;
+}
+
+@include breakpoint($mq-big) {
+  .page-wrapper {
+    padding: 0;
+  }
+}
+
+.flex-container {
+  display: flex;
+}
+
+.flex-container--between {
+  justify-content: space-between;
 }

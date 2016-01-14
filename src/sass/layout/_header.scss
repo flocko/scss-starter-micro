@@ -5,3 +5,22 @@
 .page-header {
   margin: 20px 0;
 }
+
+
+/**
+ * branding options
+ */
+
+.branding-logo {
+  display: block;
+  width: 55px;
+  height: 50px;
+  color: #111111; /* TODO */
+  text-indent: -9999px;
+  background: url('../img/logo-only@2x.png') no-repeat;
+  background-size: 55px 50px;
+
+  &:hover, &:active {
+    border-bottom: 0;
+  }
+}
