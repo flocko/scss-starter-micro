@@ -15,6 +15,7 @@
 Install bower components and copy main files to src. Components used are:
 * [Material Design Icons](https://materialdesignicons.com/)
 * [jQuery](https://jquery.com/)
+* [breakpoint](http://breakpoint-sass.com/)
 
 ### Development
     gulp
