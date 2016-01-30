@@ -30,6 +30,10 @@
  * main-bower-files
  * gulp-flatten
  * del
+ *
+ * POSTCSS
+ * stylelint
+ * postcss-reporter
  */
 
 var gulp           = require('gulp');
@@ -40,6 +44,9 @@ var htmlreplace    = require('gulp-html-replace');
 var runSequence    = require('run-sequence');
 var mainBowerFiles = require('main-bower-files');
 var del            = require('del');
+
+var stylelint      = require('stylelint');
+var reporter       = require('postcss-reporter');
 
 /**
  * ---------------------------
@@ -267,4 +274,20 @@ gulp.task('bower:copy', function() {
 
   .pipe( jsFilter )
   .pipe( gulp.dest (path.dev + options.js.dest ));
+});
+
+
+/**
+ * ---------------------------
+ * Test Tasks
+ * ---------------------------
+ **/
+
+// stylelint
+gulp.task('lint:css', function() {
+  return gulp.src("src/css/*.css")
+  .pipe(plugins.postcss([
+    stylelint(),
+    reporter({clearMessages: true})
+  ]))
 });
