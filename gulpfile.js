@@ -285,9 +285,17 @@ gulp.task('bower:copy', function() {
 
 // stylelint
 gulp.task('lint:css', function() {
-  return gulp.src("src/css/*.css")
+  return gulp.src("src/sass/**/*.scss")
   .pipe(plugins.postcss([
     stylelint(),
     reporter({clearMessages: true})
   ]))
 });
+
+/**
+ * TODO: Worflow sass:
+ * - tasks sass compile scss to css create sourcemaps and run auktoprefixer
+ * - lintcss can hook into compiled but not minified css
+ * - minify css only on build task
+ * - remove map files from build
+ */
