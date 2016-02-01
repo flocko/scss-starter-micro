@@ -50,21 +50,6 @@ var reporter       = require('postcss-reporter');
 
 /**
  * ---------------------------
- * ENV Variables
- * ---------------------------
- */
-
-// Ruby installed on machine
-// https://www.ruby-lang.org
-var ENV_RUBY = false;
-
-// ruby gem csscss: gem install csscss
-var ENV_CSSCSS = false;
-
-
-
-/**
- * ---------------------------
  * Paths and Options
  * ---------------------------
  */
@@ -218,34 +203,6 @@ gulp.task('build:clean', function() {
 
 /**
  * ---------------------------
- * Testing Tasks
- * ---------------------------
- **/
-
-// test js files with jshint
-gulp.task('test:js', function() {
-  gulp.src( path.dev + options.js.files )
-  .pipe( plugins.plumber() )
-  .pipe( plugins.jshint() )
-  .pipe( plugins.jshint.reporter( 'default' ) );
-});
-
-// css details
-gulp.task('test:css', function() {
-  gulp.src( path.dev + options.css.dest + options.css.file )
-  .pipe( plugins.plumber() )
-  .pipe( plugins.parker() );
-
-  if (ENV_RUBY && ENV_CSSCSS) {
-    gulp.src( path.dev + options.css.dest + options.css.file )
-    .pipe( plugins.plumber() )
-    .pipe( plugins.csscss() );
-  }
-});
-
-
-/**
- * ---------------------------
  * Exec Tasks
  * ---------------------------
  **/
@@ -285,7 +242,7 @@ gulp.task('bower:copy', function() {
 
 // stylelint
 gulp.task('lint:css', function() {
-  return gulp.src("src/sass/**/*.scss")
+  return gulp.src(path.dev + options.sass.files)
   .pipe(plugins.postcss([
     stylelint(),
     reporter({clearMessages: true})
