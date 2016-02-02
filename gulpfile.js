@@ -5,7 +5,6 @@
  * gulp exec  - install bower components and copy files
  * gulp       - start local dev server and watch for file changes
  * gulp build - copy src content to app/ for release
- * gulp test  - html/js/css testing
  */
 
 
@@ -100,7 +99,6 @@ var vendor = {
  */
 
 gulp.task('default', ['dev']);
-gulp.task('test', ['test:js', 'test:css']);
 
 // run-sequence until gulp 4.0
 gulp.task('build', function(done) {
