@@ -130,7 +130,7 @@ gulp.task('dev', ['sass'], function() {
 gulp.task('sass', function() {
   gulp.src( path.dev + options.sass.files )
   .pipe( plugins.plumber() )
-  .pipe( plugins.sass( { outputStyle : 'compressed' }).on('error', plugins.sass.logError))
+  .pipe( plugins.sass( { outputStyle : 'nested' }).on('error', plugins.sass.logError))
   .pipe( plugins.autoprefixer( {
     browsers: ['last 2 versions'],
       cascade: false
@@ -249,7 +249,7 @@ gulp.task('lint:css', function() {
 
 /**
  * TODO: Worflow sass:
- * - tasks sass compile scss to css create sourcemaps and run auktoprefixer
+ * - tasks sass compile scss to css create sourcemaps and run autoprefixer
  * - lintcss can hook into compiled but not minified css
  * - minify css only on build task
  * - remove map files from build
