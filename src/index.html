@@ -12,7 +12,7 @@
 <body>
 
   <div class="navbar">
-    <div class="page-wrapper flex-container flex-container--between"> 
+    <div class="page-wrapper flexgrid flexgrid--between"> 
       <a href="/" class="branding-logo branding-logo--retina">Logo</a>
       <label for="toggleNav" class="toggleNavIcon"><i class="mdi mdi-menu"></i></label>
     </div>
@@ -34,54 +34,79 @@
     </div>
   </header>
   <main class="page-content">
+    <section>
+      <h1>Panel</h1>
+      <div class="panel panel--accent panel--headline">
+        <h1 class="panel__headline">Accent Panel - Headline Only</h1>
+      </div>    
 
-  <section class="page-wrapper">
-    <h1>Page Heading (h1)</h1>
-    <h2>Sub heading (h2)</h2>
-    <h3>Section heading (h3)</h3>
-    <h4>Sub section heading (h4)</h4>
-    <strong>Strong text (strong)</strong>
-    <p>Body Text</p>
+      <h1>Panel Group</h1>
+      <div class="panel-group">
+        <div class="panel">
+          <h3 class="panel__headline">Default Panel</h3>
+        </div>    
+        <div class="panel panel--accent">
+          <div class="panel__content">
+            <h1 class="panel__headline">Accent Panel</h1>
+            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+          </div>
+        </div>
 
-    <p>Some paragraph is here</p>
+        <div class="panel panel--primary">
+          <div class="panel__content">
+            <h3 class="panel__headline">Primary Panel</h3>
+            Lets test this panel with some text and see what happens
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="page-wrapper">
+      <h1>Page Heading (h1)</h1>
+      <h2>Sub heading (h2)</h2>
+      <h3>Section heading (h3)</h3>
+      <h4>Sub section heading (h4)</h4>
+      <strong>Strong text (strong)</strong>
+      <p>Body Text</p>
 
-    <h2>Icons by MDI</h2>
-    <i class="mdi mdi-bell"></i>
-    <a href="https://materialdesignicons.com/">Material Design Icons</a>
-    <i class="mdi mdi-bell"></i>
-  </section>
+      <p>Some paragraph is here</p>
 
-  <section class="page-wrapper">
-    <h2>Color Definitions</h2>
-    <div class="colorbox-wrapper">
-      <div class="colorbox colorbox_primary">$color-primary</div>
-      <div class="colorbox colorbox_primary-light">$color-primary-light</div>
-      <div class="colorbox colorbox_primary-dark">$color-primary-dark</div>
-      <div class="colorbox colorbox_primary-text">$color-primary-text</div>
-      <div class="colorbox colorbox_accent">$color-accent</div>
-      <div class="colorbox colorbox_secondary-text">$color-secondary-text</div>
-      <div class="colorbox colorbox_icons">$color-icons</div>
-    </div>
-  </section>
+      <h2>Icons by MDI</h2>
+      <i class="mdi mdi-bell"></i>
+      <a href="https://materialdesignicons.com/">Material Design Icons</a>
+      <i class="mdi mdi-bell"></i>
+    </section>
 
-  <section class="page-wrapper">
-    <h2>Form Elements</h2>
-  </section>
+    <section class="page-wrapper">
+      <h2>Color Definitions</h2>
+      <div class="colorbox-wrapper">
+        <div class="colorbox colorbox_primary">$color-primary</div>
+        <div class="colorbox colorbox_primary-light">$color-primary-light</div>
+        <div class="colorbox colorbox_primary-dark">$color-primary-dark</div>
+        <div class="colorbox colorbox_primary-text">$color-primary-text</div>
+        <div class="colorbox colorbox_accent">$color-accent</div>
+        <div class="colorbox colorbox_secondary-text">$color-secondary-text</div>
+        <div class="colorbox colorbox_icons">$color-icons</div>
+      </div>
+    </section>
 
-  <section class="page-wrapper">
-    <h2>Buttons</h2>
-    <!-- standard buttons -->
-    <button class="button">Standard</button>
-    <button class="button button--colored">Primary</button>
-    <button class="button button--accent">Accent</button>
-    <button class="button" disabled>Disabled</button>
+    <section class="page-wrapper">
+      <h2>Form Elements</h2>
+    </section>
 
-    <!-- raised buttons -->
-    <button class="button button--raised">Raised</button>
-    <button class="button button--raised button--colored">Raised colored</button>
-    <button class="button button--raised button--accent">Raised accent</button>
-    <button class="button button--raised" disabled>Raised disabled</button>
-  </section>
+    <section class="page-wrapper">
+      <h2>Buttons</h2>
+      <!-- standard buttons -->
+      <button class="button">Standard</button>
+      <button class="button button--colored">Primary</button>
+      <button class="button button--accent">Accent</button>
+      <button class="button" disabled>Disabled</button>
+
+      <!-- raised buttons -->
+      <button class="button button--raised">Raised</button>
+      <button class="button button--raised button--colored">Raised colored</button>
+      <button class="button button--raised button--accent">Raised accent</button>
+      <button class="button button--raised" disabled>Raised disabled</button>
+    </section>
   </main>
   <footer class="page-footer"></footer>
 

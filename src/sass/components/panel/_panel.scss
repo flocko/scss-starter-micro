@@ -1,0 +1,37 @@
+.panel-group {
+  .panel {
+    margin-bottom: 0;
+    box-shadow: none;
+  }
+}
+
+.panel {
+  padding: 30px 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.16),0 0 2px 0 rgba(0,0,0,.12);
+}
+
+.panel--accent {
+  background-color: $color-accent;
+  color: $color-accent-text;
+}
+
+.panel--primary {
+  background-color: $color-primary;
+  color: $color-primary-text;
+}
+
+.panel--headline {
+  .panel__headline {
+    margin-bottom: 0;
+  }
+}
+
+.panel__content {
+  @extend .page-wrapper;
+}
+
+.panel__headline {
+  text-align: center;
+  margin-top: 0;
+}

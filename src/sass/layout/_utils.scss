@@ -8,18 +8,12 @@
   padding: 0 10px;
 }
 
-@include breakpoint($mq-big) {
-  .page-wrapper {
-    padding: 0;
-  }
-}
-
 
 /**
  * Flexbox utils
  */
 
-.flex-container {
+.flexgrid {
   display: flex;
 
   &--start {
