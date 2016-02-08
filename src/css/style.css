@@ -4306,6 +4306,9 @@ textarea {
   [hidden][aria-hidden="false"]:focus {
     clip: auto; }
 
+img {
+  max-width: 100%; }
+
 /**
  * Load fonts and assign variables
  */
@@ -4404,6 +4407,48 @@ a {
     background: #727272; }
   .colorbox_icons {
     background: #ffffff; }
+
+/**
+ * Simple flexbox grid system
+ */
+.grid {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin: -20px 0 20px 0px;
+  padding: 0; }
+
+.page-wrapper .grid, .panel__content .grid {
+  margin: -20px -20px 20px -20px; }
+
+.cell {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding: 20px 0 0 20px; }
+
+.cell--full {
+  -webkit-flex: 0 0 100%;
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%; }
+
+.cell--half {
+  -webkit-flex: 0 0 50%;
+  -ms-flex: 0 0 50%;
+  flex: 0 0 50%; }
+
+.cell--third {
+  -webkit-flex: 0 0 33.3333%;
+  -ms-flex: 0 0 33.3333%;
+  flex: 0 0 33.3333%; }
+
+.cell--fourth {
+  -webkit-flex: 0 0 25%;
+  -ms-flex: 0 0 25%;
+  flex: 0 0 25%; }
 
 /**
  * Button definition template 
@@ -4569,7 +4614,7 @@ a {
 .page-wrapper, .panel__content {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 10px; }
+  padding: 0 20px; }
 
 /**
  * Flexbox utils
