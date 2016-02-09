@@ -2,16 +2,13 @@
  * Simple flexbox grid system
  */
 
+/* TODO: test and implement sane media queries for breakpoints */
+
 .grid {
   display: flex;
   flex-wrap: wrap;
-  margin: -20px 0 20px 0px;
+  margin: -20px 0 0px -20px;
   padding: 0;
-}
-
-// page-wrapper already includes spacing
-.page-wrapper .grid {
-  margin: -20px -20px 20px -20px;
 }
 
 .cell {
@@ -19,18 +16,27 @@
   padding: 20px 0 0 20px;
 }
 
-.cell--full {
+.cell--full,
+.cell--half,
+.cell--third,
+.cell--fourth {
   flex: 0 0 100%;
 }
 
-.cell--half {
-  flex: 0 0 50%;
-}
+@include breakpoint($mq-small) {
+  .cell--full {
+    flex: 0 0 100%;
+  }
 
-.cell--third {
-  flex: 0 0 33.3333%;
-}
+  .cell--half {
+    flex: 0 0 50%;
+  }
 
-.cell--fourth {
-  flex: 0 0 25%;
+  .cell--third {
+    flex: 0 0 33.3333%;
+  }
+
+  .cell--fourth {
+    flex: 0 0 25%;
+  }
 }

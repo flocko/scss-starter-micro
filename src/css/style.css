@@ -4411,6 +4411,7 @@ a {
 /**
  * Simple flexbox grid system
  */
+/* TODO: test and implement sane media queries for breakpoints */
 .grid {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4418,11 +4419,8 @@ a {
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin: -20px 0 20px 0px;
+  margin: -20px 0 0px -20px;
   padding: 0; }
-
-.page-wrapper .grid, .panel__content .grid {
-  margin: -20px -20px 20px -20px; }
 
 .cell {
   -webkit-flex: 1;
@@ -4430,25 +4428,31 @@ a {
   flex: 1;
   padding: 20px 0 0 20px; }
 
-.cell--full {
+.cell--full,
+.cell--half,
+.cell--third,
+.cell--fourth {
   -webkit-flex: 0 0 100%;
   -ms-flex: 0 0 100%;
   flex: 0 0 100%; }
 
-.cell--half {
-  -webkit-flex: 0 0 50%;
-  -ms-flex: 0 0 50%;
-  flex: 0 0 50%; }
-
-.cell--third {
-  -webkit-flex: 0 0 33.3333%;
-  -ms-flex: 0 0 33.3333%;
-  flex: 0 0 33.3333%; }
-
-.cell--fourth {
-  -webkit-flex: 0 0 25%;
-  -ms-flex: 0 0 25%;
-  flex: 0 0 25%; }
+@media (min-width: 400px) {
+  .cell--full {
+    -webkit-flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%; }
+  .cell--half {
+    -webkit-flex: 0 0 50%;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%; }
+  .cell--third {
+    -webkit-flex: 0 0 33.3333%;
+    -ms-flex: 0 0 33.3333%;
+    flex: 0 0 33.3333%; }
+  .cell--fourth {
+    -webkit-flex: 0 0 25%;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%; } }
 
 /**
  * Button definition template 
