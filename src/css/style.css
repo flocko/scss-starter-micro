@@ -4411,7 +4411,7 @@ a {
 /**
  * Simple flexbox grid system
  */
-/* TODO: test and implement sane media queries for breakpoints */
+/* TODO: implement sane media queries for breakpoints */
 .grid {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4422,11 +4422,31 @@ a {
   margin: -20px 0 0px -20px;
   padding: 0; }
 
+.grid--centered {
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
+
+.grid--vbottom {
+  -webkit-align-items: flex-end;
+  -ms-flex-align: end;
+  align-items: flex-end; }
+
 .cell {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   padding: 20px 0 0 20px; }
+
+.cell--vcenter {
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center; }
+
+.cell--vbottom {
+  -webkit-align-self: flex-end;
+  -ms-flex-item-align: end;
+  align-self: flex-end; }
 
 .cell--full,
 .cell--half,

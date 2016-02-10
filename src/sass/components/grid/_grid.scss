@@ -2,7 +2,7 @@
  * Simple flexbox grid system
  */
 
-/* TODO: test and implement sane media queries for breakpoints */
+/* TODO: implement sane media queries for breakpoints */
 
 .grid {
   display: flex;
@@ -11,9 +11,25 @@
   padding: 0;
 }
 
+.grid--centered {
+  justify-content: center;
+}
+
+.grid--vbottom {
+  align-items: flex-end;
+}
+
 .cell {
   flex: 1;
   padding: 20px 0 0 20px;
+}
+
+.cell--vcenter {
+  align-self: center;
+}
+
+.cell--vbottom {
+  align-self: flex-end;
 }
 
 .cell--full,
