@@ -29,6 +29,10 @@
 
 .panel__content {
   @extend .page-wrapper;
+
+  :last-child {
+    margin-bottom: 0;
+  }
 }
 
 .panel__headline {
