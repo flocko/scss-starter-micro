@@ -13,7 +13,7 @@
  * Flexbox utils
  */
 
-.flexgrid {
+.flex {
   display: flex;
 
   &--start {
@@ -30,5 +30,17 @@
   }
   &--around {
     justify-content: space-around;
+  }
+  &--vcenter {
+    align-items: center;
+  }
+  &--vbottom {
+    align-items: flex-end;
+  }
+  &--vbase {
+    align-items: baseline;
+  }
+  &--vstretch {
+    align-items: stretch;
   }
 }

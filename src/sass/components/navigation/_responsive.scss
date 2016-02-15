@@ -13,6 +13,11 @@
   background-color: $navbar-primary-color;
   padding: 10px 0;
   @extend %clearfix;
+
+  .navbar__title {
+    margin: 0;
+    font-size: 20px;
+  }
 }
 
 #toggleNav {
