@@ -56,7 +56,7 @@ var reporter       = require('postcss-reporter');
 var path = {
   build : 'app/',
   dev   : 'src/'
-}
+};
 
 var options = {
   sass  : {
@@ -86,11 +86,11 @@ var options = {
     files: 'fonts/**/*',
     dest : 'fonts/'
   }
-}
+};
 
 var vendor = {
   sass : 'sass/vendor'
-}
+};
 
 /**
  * ---------------------------
@@ -244,11 +244,11 @@ gulp.task('lint:css', function() {
   .pipe(plugins.postcss([
     stylelint(),
     reporter({clearMessages: true})
-  ]))
+  ]));
 });
 
 /**
- * TODO: Worflow sass:
+ * Worflow sass:
  * - tasks sass compile scss to css create sourcemaps and run autoprefixer
  * - lintcss can hook into compiled but not minified css
  * - minify css only on build task
