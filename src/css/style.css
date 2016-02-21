@@ -12,10 +12,10 @@
 @import url("//fonts.googleapis.com/css?family=Open+Sans:400,600,600italic");
 .navbar {
   *zoom: 1; }
-  .navbar:before, .navbar:after {
+  .navbar::before, .navbar::after {
     content: " ";
     display: table; }
-  .navbar:after {
+  .navbar::after {
     clear: both; }
 
 /**
@@ -6478,7 +6478,7 @@
  * Load base includes
  * sanitize, typography, ...
  */
-/*! sanitize.css v3.0.0 | CC0 1.0 Public Domain | github.com/10up/sanitize.css */
+/*! sanitize.css v3.2.0 | CC0 1.0 Public Domain | github.com/10up/sanitize.css */
 /*
  * Normalization
  */
@@ -6486,8 +6486,8 @@ audio:not([controls]) {
   display: none; }
 
 button {
-  overflow: visible;
-  -webkit-appearance: button; }
+  -webkit-appearance: button;
+  overflow: visible; }
 
 details {
   display: block; }
@@ -6567,12 +6567,11 @@ textarea {
   padding: 0; }
 
 :root {
-  background-color: #FFFFFF;
+  background-color: #fff;
   box-sizing: border-box;
-  color: #000000;
+  color: #000;
   cursor: default;
-  font: 100% / 1.5 sans-serif;
-  text-rendering: optimizeLegibility; }
+  font: 100% / 1.5 sans-serif; }
 
 a {
   text-decoration: none; }
@@ -6647,13 +6646,13 @@ textarea {
   resize: vertical; }
 
 ::-moz-selection {
-  background-color: #B3D4FC;
-  color: #ffffff;
+  background-color: #b3d4fc;
+  color: #fff;
   text-shadow: none; }
 
 ::selection {
-  background-color: #B3D4FC;
-  color: #ffffff;
+  background-color: #b3d4fc;
+  color: #fff;
   text-shadow: none; }
 
 [aria-busy="true"] {
@@ -6672,8 +6671,16 @@ textarea {
   [hidden][aria-hidden="false"]:focus {
     clip: auto; }
 
-img {
-  max-width: 100%; }
+a,
+area,
+button,
+input,
+label,
+select,
+textarea,
+[tabindex] {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation; }
 
 /**
  * Load fonts and assign variables
@@ -6689,13 +6696,19 @@ body {
   font-size: 0.9375rem;
   line-height: 1.5rem; }
 
-strong, b {
+strong,
+b {
   font: 600 100% "Open Sans", Helvetica, Arial sans-serif; }
 
 p {
   margin-bottom: 1em; }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font: 600 100% "Open Sans", Helvetica, Arial sans-serif; }
 
 h1 {
@@ -6735,6 +6748,9 @@ a {
     border-color: #212121;
     color: #212121; }
 
+img {
+  max-width: 100%; }
+
 /**
  * Load components
  *
@@ -6766,13 +6782,13 @@ a {
     background: #1976d2; }
   .colorbox_primary-text {
     background: #212121;
-    color: #ffffff; }
+    color: #fff; }
   .colorbox_accent {
     background: #f44336; }
   .colorbox_secondary-text {
     background: #727272; }
   .colorbox_icons {
-    background: #ffffff; }
+    background: #fff; }
 
 /**
  * Simple flexbox grid system
@@ -6785,7 +6801,7 @@ a {
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin: -20px 0 0px -20px;
+  margin: -20px 0 0 -20px;
   padding: 0; }
 
 .grid--centered {
@@ -6841,7 +6857,7 @@ a {
     flex: 0 0 25%; } }
 
 /**
- * Button definition template 
+ * Button definition template
  * https://github.com/google/material-design-lite
  */
 .button {
@@ -6863,71 +6879,71 @@ a {
   line-height: 36px;
   vertical-align: middle; }
   .button:hover {
-    background-color: #eeeeee; }
+    background-color: #eee; }
   .button:focus:not(:active) {
-    background-color: #eeeeee; }
+    background-color: #eee; }
   .button:active {
-    background-color: #dddddd; }
+    background-color: #ddd; }
   .button.button--colored {
     color: #2196f3; }
     .button.button--colored:focus:not(:active) {
-      background-color: #eeeeee; }
+      background-color: #eee; }
   .button.button--accent {
     color: #f44336; }
     .button.button--accent:focus:not(:active) {
-      background-color: #eeeeee; }
+      background-color: #eee; }
   .button[disabled][disabled], .button.mdl-button--disabled.mdl-button--disabled {
-    color: #999999;
+    color: #999;
     cursor: default;
     background-color: transparent; }
 
 .button--raised {
-  background: #eeeeee;
+  background: #eee;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); }
   .button--raised:active {
-    background-color: #dddddd;
+    background-color: #ddd;
     box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2); }
   .button--raised:focus:not(:active) {
-    background-color: #dddddd;
+    background-color: #ddd;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.18), 0 8px 16px rgba(0, 0, 0, 0.36); }
   .button--raised[disabled][disabled], .button--raised.button--disabled.button--disabled {
-    background-color: #dddddd;
-    color: #999999; }
+    background-color: #ddd;
+    color: #999; }
 
 .button--colored.button--colored {
   color: #2196f3; }
   .button--colored.button--colored.button--raised {
-    color: #ffffff;
+    color: #fff;
     background-color: #2196f3; }
     .button--colored.button--colored.button--raised:active {
-      color: #ffffff;
+      color: #fff;
       background-color: #2196f3; }
     .button--colored.button--colored.button--raised:focus:not(:active) {
-      color: #ffffff;
+      color: #fff;
       background-color: #2196f3; }
   .button--colored.button--colored[disabled][disabled], .button--colored.button--colored.button--disabled.button--disabled {
-    background-color: #dddddd;
-    color: #999999; }
+    background-color: #ddd;
+    color: #999; }
 
 .button--accent.button--accent {
   color: #f44336; }
   .button--accent.button--accent.button--raised {
-    color: #ffffff;
+    color: #fff;
     background-color: #f44336; }
     .button--accent.button--accent.button--raised:active, .button--accent.button--accent.button--raised:focus:not(:active) {
-      color: #ffffff;
+      color: #fff;
       background-color: #f44336; }
   .button--accent.button--accent[disabled][disabled], .button--accent.button--accent.button--disabled.button--disabled {
-    background-color: #dddddd;
-    color: #999999; }
+    background-color: #ddd;
+    color: #999; }
 
 /**
  * Simple responsive navigation
  * based on input:checked field
  **/
-/* -------------------------- */
-/* components                 */
-/* -------------------------- */
+/* -------------------------- *
+ * components                 *
+ * -------------------------- */
 .navbar {
   width: 100%;
   background-color: #2196f3;
@@ -6949,9 +6965,9 @@ a {
 #toggleNav:checked ~ .main-navigation {
   display: block; }
 
-/* -------------------------- */
-/* mobile navigation          */
-/* -------------------------- */
+/* -------------------------- *
+ * mobile navigation          *
+ * -------------------------- */
 .main-navigation {
   width: 100%;
   list-style-type: none;
@@ -6970,9 +6986,9 @@ a {
     .main-navigation a:hover, .main-navigation a:focus {
       background-color: #bbdefb; }
 
-/* -------------------------- */
-/* desktop navigation         */
-/* -------------------------- */
+/* -------------------------- *
+ * desktop navigation         *
+ * -------------------------- */
 .panel-group .panel {
   margin-bottom: 0;
   box-shadow: none; }
@@ -6984,7 +7000,7 @@ a {
 
 .panel--accent {
   background-color: #f44336;
-  color: #ffffff; }
+  color: #fff; }
 
 .panel--primary {
   background-color: #2196f3;
@@ -7069,7 +7085,7 @@ a {
   display: block;
   width: 55px;
   height: 50px;
-  color: #111111;
+  color: #111;
   /* TODO */
   text-indent: -9999px;
   background: url("../img/logo-only@2x.png") no-repeat;

@@ -33,6 +33,7 @@
  * POSTCSS
  * stylelint
  * postcss-reporter
+ * postcss-scss
  */
 
 var gulp           = require('gulp');
@@ -46,6 +47,7 @@ var del            = require('del');
 
 var stylelint      = require('stylelint');
 var reporter       = require('postcss-reporter');
+var scss           = require('postcss-scss');
 
 /**
  * ---------------------------
@@ -239,12 +241,15 @@ gulp.task('bower:copy', function() {
  **/
 
 // stylelint
-gulp.task('lint:css', function() {
-  return gulp.src(path.dev + options.sass.files)
+gulp.task('lint:scss', function() {
+  return gulp.src([path.dev + options.sass.files, '!src/sass/vendor{,/**}'])
   .pipe(plugins.postcss([
     stylelint(),
     reporter({clearMessages: true})
-  ]));
+  ],{
+    syntax: scss
+  }))
+  .pipe( plugins.plumber() );
 });
 
 /**

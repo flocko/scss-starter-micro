@@ -19,10 +19,12 @@ $font-icons: 100% "Material Design Icons";
 body {
   color: $color-primary-text;
   font: $font-text;
+
   @include font-size(15px,24px);
 }
 
-strong, b {
+strong,
+b {
   font: $font-text-bold;
 }
 
@@ -30,7 +32,12 @@ p {
   margin-bottom: 1em;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font: $font-headline;
 }
 
@@ -46,6 +53,7 @@ h2 {
 
 h3 {
   font: $font-headline-italic;
+
   @include font-size(21px,28px);
   margin: 1.2rem 0;
 }
@@ -60,8 +68,13 @@ a {
   border-bottom: 1px solid transparent;
   transition: all 0.5s ease-in-out;
 
-  &:hover, &:active {
+  &:hover,
+  &:active {
     border-color: $color-primary-text;
     color: $color-primary-text;
   }
+}
+
+img {
+  max-width: 100%;
 }

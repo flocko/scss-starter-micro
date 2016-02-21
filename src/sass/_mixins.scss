@@ -5,6 +5,7 @@
 
 @function calculateRem($size) {
   $remSize: $size / 16px;
+
   @return $remSize * 1rem;
 }
 
@@ -12,7 +13,7 @@
   font-size: $size;
   line-height: $lineheight;
   font-size: calculateRem($size);
-  line-height: calculateRem($lineheight);  
+  line-height: calculateRem($lineheight);
 }
 
 /**
@@ -21,11 +22,12 @@
  */
 %clearfix {
   *zoom: 1;
-  &:before, &:after {
+  &::before,
+  &::after {
     content: " ";
     display: table;
   }
-  &:after {
+  &::after {
     clear: both;
   }
 }
@@ -34,6 +36,6 @@
  * Color palette
  * usage: palette(red)
  */
-@function palette($palette, $tone: 'base') {
+@function palette($palette, $tone: "base") {
   @return map-get(map-get($palettes, $palette), $tone);
 }

@@ -3,15 +3,15 @@
  * based on input:checked field
  **/
 
-
-/* -------------------------- */
-/* components                 */
-/* -------------------------- */
+/* -------------------------- *
+ * components                 *
+ * -------------------------- */
 
 .navbar {
   width: 100%;
   background-color: $navbar-primary-color;
   padding: 10px 0;
+
   @extend %clearfix;
 
   .navbar__title {
@@ -26,17 +26,17 @@
 
 .toggleNavIcon {
   cursor: pointer;
-  @include font-size(30px);  
+
+  @include font-size(30px);
 }
 
 #toggleNav:checked ~ .main-navigation {
   display: block;
 }
 
-
-/* -------------------------- */
-/* mobile navigation          */
-/* -------------------------- */
+/* -------------------------- *
+ * mobile navigation          *
+ * -------------------------- */
 
 .main-navigation {
   width: 100%;
@@ -48,15 +48,15 @@
     color: white; /* TODO */
     display: block;
     padding: 10px 10px;
-    @include font-size(18px);
 
-    &:hover, &:focus {
+    @include font-size(18px);
+    &:hover,
+    &:focus {
       background-color: $navbar-hover-color;
     }
   }
 }
 
-
-/* -------------------------- */
-/* desktop navigation         */
-/* -------------------------- */
+/* -------------------------- *
+ * desktop navigation         *
+ * -------------------------- */

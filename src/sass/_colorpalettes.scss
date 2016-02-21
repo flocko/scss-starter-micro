@@ -1,17 +1,18 @@
-$palettes: (
+$palettes:
+  (
     blue: (
-        base :  rgb(33,150,243),
-        light:  rgb(187,222,251),
-        dark :  rgb(25,118,210)
+        base :  rgb(33, 150, 243),
+        light:  rgb(187, 222, 251),
+        dark :  rgb(25, 118, 210)
     ),
     red: (
-        base : rgb(244,67,54),
-        light: rgb(255,205,210),
-        dark : rgb(211,47,47)
+        base : rgb(244, 67, 54),
+        light: rgb(255, 205, 210),
+        dark : rgb(211, 47, 47)
     ),
     green: (
-        base : rgb(76,175,80),
-        light: rgb(200,230,201),
-        dark : rgb(56,142,60)
+        base : rgb(76, 175, 80),
+        light: rgb(200, 230, 201),
+        dark : rgb(56, 142, 60)
     )
 );

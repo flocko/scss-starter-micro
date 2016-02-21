@@ -1,5 +1,5 @@
 /**
- * Button definition template 
+ * Button definition template
  * https://github.com/google/material-design-lite
  */
 
@@ -15,9 +15,10 @@
   display: inline-block;
   overflow: hidden;
   will-change: box-shadow, transform;
-  transition: box-shadow 0.2s $animation-curve-fast-out-linear-in,
-              background-color 0.2s $animation-curve-default,
-              color 0.2s $animation-curve-default;
+  transition:
+    box-shadow 0.2s $animation-curve-fast-out-linear-in,
+    background-color 0.2s $animation-curve-default,
+    color 0.2s $animation-curve-default;
   outline: none;
   cursor: pointer;
   text-align: center;
@@ -57,28 +58,28 @@
     color: $button-disabled-text;
     cursor: default;
     background-color: transparent;
-  }  
+  }
 }
 
 .button--raised {
   background: $button-primary-color;
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 
   &:active {
     background-color: $button-active-color;
-    box-shadow: 0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12),0 2px 4px -1px rgba(0,0,0,.2);
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
   }
 
-  &:focus:not(:active){
+  &:focus:not(:active) {
     background-color: $button-active-color;
-    box-shadow: 0 0 8px rgba(0,0,0,.18),0 8px 16px rgba(0,0,0,.36);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.18), 0 8px 16px rgba(0, 0, 0, 0.36);
   }
 
   &[disabled][disabled],
   &.button--disabled.button--disabled {
     background-color: $button-disabled-color;
     color: $button-disabled-text;
-  }  
+  }
 }
 
 .button--colored.button--colored {
@@ -98,7 +99,7 @@
       background-color: $button-primary-color-alt;
     }
   }
-    
+
   &[disabled][disabled],
   &.button--disabled.button--disabled {
     background-color: $button-disabled-color;
@@ -113,7 +114,8 @@
     color: $button-accent-text;
     background-color: $button-accent-color;
 
-    &:active, &:focus:not(:active) {
+    &:active,
+    &:focus:not(:active) {
       color: $button-accent-text;
       background-color: $button-accent-color;
     }

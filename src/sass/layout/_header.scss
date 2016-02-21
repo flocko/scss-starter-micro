@@ -6,7 +6,6 @@
   margin: 20px 0;
 }
 
-
 /**
  * branding options
  */
@@ -15,12 +14,13 @@
   display: block;
   width: 55px;
   height: 50px;
-  color: #111111; /* TODO */
+  color: #111; /* TODO */
   text-indent: -9999px;
-  background: url('../img/logo-only@2x.png') no-repeat;
+  background: url("../img/logo-only@2x.png") no-repeat;
   background-size: 55px 50px;
 
-  &:hover, &:active {
+  &:hover,
+  &:active {
     border-bottom: 0;
   }
 }
