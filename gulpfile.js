@@ -32,6 +32,7 @@
  *
  * POSTCSS
  * stylelint
+ * cssnano
  * postcss-reporter
  * postcss-scss
  */
@@ -48,6 +49,7 @@ var del            = require("del");
 var stylelint      = require("stylelint");
 var reporter       = require("postcss-reporter");
 var scss           = require("postcss-scss");
+var cssnano        = require("cssnano");
 
 /**
  * ---------------------------
@@ -104,7 +106,7 @@ gulp.task("default", ["dev"]);
 
 // run-sequence until gulp 4.0
 gulp.task("build", function(done) {
-  runSequence("build:clean", "sass", ["copy:style","copy:html", "copy:img", "copy:fonts", "minify:js"], "html:replace", done);
+  runSequence("build:clean", "sass", ["build:css","copy:html", "copy:img", "copy:fonts", "minify:js"], "html:replace", done);
 });
 
 gulp.task("exec", function(done) {
@@ -132,11 +134,13 @@ gulp.task("dev", ["sass"], function() {
 gulp.task("sass", function() {
   gulp.src( path.dev + options.sass.files )
   .pipe( plugins.plumber() )
+  .pipe( plugins.sourcemaps.init())
   .pipe( plugins.sass( { outputStyle : "nested" }).on("error", plugins.sass.logError))
   .pipe( plugins.autoprefixer( {
     browsers: ["last 2 versions"],
       cascade: false
     }))
+  .pipe(plugins.sourcemaps.write("/"))
   .pipe(gulp.dest( path.dev + options.css.dest ))
   .pipe(reload({stream: true}));
 });
@@ -148,7 +152,24 @@ gulp.task("sass", function() {
  * ---------------------------
  **/
 
+// build serve
+gulp.task("build:serve", function() {
+  browserSync({
+    server: "./app"
+  });
+}); 
+
+// build css
+gulp.task("build:css", function() {
+  return gulp.src( path.dev + options.css.dest + options.css.file )
+  .pipe( plugins.postcss([
+    cssnano()])
+  )
+  .pipe( gulp.dest( path.build + options.css.dest ) );
+}); 
+
 // concat all js files for build
+/* TODO: breaks on build */
 gulp.task("minify:js", function() {
   return gulp.src(path.dev + options.js.files)
   .pipe( plugins.plumber() )
